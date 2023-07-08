@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093780532567",
+    "project_id": "theapp-9e2f9",
+    "storage_bucket": "theapp-9e2f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093780532567:android:c75a97411920573208a212",
+        "android_client_info": {
+          "package_name": "com.example.zavrsni_rdma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093780532567-kk2bvvmil955c52ombgimb6id3jd9hhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqSiqDzWjswgsEtLmMBoScZ_eBNtbVHOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093780532567-kk2bvvmil955c52ombgimb6id3jd9hhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
