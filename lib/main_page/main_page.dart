@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zavrsni_rdma/main_page/drawer.dart';
-import 'package:zavrsni_rdma/main_page/menu_button.dart';
+import 'drawer.dart';
+import 'menu_button.dart';
 
 final ValueNotifier<ThemeMode> _notifier = ValueNotifier(ThemeMode.light);
 bool _themeBool = true;
