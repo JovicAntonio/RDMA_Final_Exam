@@ -18,13 +18,14 @@ class _Maps extends State<Maps> {
     
   // created list of coordinates of various locations
   final List<LatLng> _latLen = <LatLng>[
-  
-    const LatLng(45.34675042728017, 14.43095729384356),
-    const LatLng(45.347711279214465, 14.433652166925507),
-    const LatLng(45.35255379985314, 14.429565478198825),
-    const LatLng(45.353889100747345, 14.427277659959953),
-    const LatLng(45.35598409989911, 14.426746907684693),
     const LatLng(45.35689263889851, 14.424666281834506),
+    const LatLng(45.35598409989911, 14.426746907684693),
+    const LatLng(45.353889100747345, 14.427277659959953),
+    const LatLng(45.35255379985314, 14.429565478198825),
+    const LatLng(45.347711279214465, 14.433652166925507),
+    const LatLng(45.34675042728017, 14.43095729384356),
+    
+    
   ];
 
   @override
@@ -41,7 +42,7 @@ class _Maps extends State<Maps> {
           icon: BitmapDescriptor.defaultMarker,
           position: _latLen[i],
           infoWindow: InfoWindow(
-            title: 'Location: $i',
+            title: 'Stanica: $i',
           ),
         )
       );

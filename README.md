@@ -1,16 +1,18 @@
-# zavrsni_rdma
+# IBus
 
-A new Flutter project.
+Mobile app for tracking bus stations and schedules of bus departures
 
-## Getting Started
+## About project
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+This Flutter project is meant for final exam on University. The idea is, at some point in the future, for this project to become as standalone mobile application with all the necessary features.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Authors
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Antonio Jović](https://www.linkedin.com/in/antonio-jovi%C4%87-a0502326b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BK8elJrkpQteQ21SQP8e1QQ%3D%3D) - mobile development
+- [Dea Noč](https://www.linkedin.com/in/dea-noc-456a88215?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BJd5N5KTeThm1nkLVN5q7IQ%3D%3D) - UI design
+
+## Used design
+
+- [Figma project](https://www.figma.com/file/12vVINQN5h3tnWvxCiM5q0/Zavrsni_Noc?type=design&node-id=0-1&mode=design)

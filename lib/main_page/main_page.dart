@@ -3,11 +3,11 @@ import 'drawer.dart';
 import 'maps.dart';
 import 'menu_button.dart';
 
-final ValueNotifier<ThemeMode> _notifier = ValueNotifier(ThemeMode.light);
+final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
 bool _themeBool = true;
 IconData _lightIcon = Icons.light_mode;
 IconData _darkIcon = Icons.dark_mode;
-
+const Color barColor = Color.fromARGB(255, 255, 119, 0);
 ThemeMode mode = ThemeMode.light;
 
 class MainPage extends StatelessWidget {
@@ -16,7 +16,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<ThemeMode>(
-      valueListenable: _notifier,
+      valueListenable: themeNotifier,
       builder: (_, mode, __) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -25,29 +25,31 @@ class MainPage extends StatelessWidget {
           darkTheme: ThemeData.dark(),
           themeMode: mode,
           home: Scaffold(
-            drawer: const DrawerLookup(),
+            drawer: const DrawerLookup(
+              barColor: barColor,
+            ),
             appBar: AppBar(
               title: const Text(
                 'IBus',
               ),
               centerTitle: true,
-              backgroundColor: const Color.fromARGB(255, 239, 152, 47),
+              backgroundColor: barColor,
               shadowColor: Colors.black,
               leading: const MenuButton(),
               actions: [
                 IconButton(
                     alignment: Alignment.center,
                     icon: Icon(_themeBool ? _lightIcon : _darkIcon),
-                    tooltip: 'Change theme',
+                    tooltip: 'Promijeni temu',
                     onPressed: () {
-                      _notifier.value = mode == ThemeMode.light
+                      themeNotifier.value = mode == ThemeMode.light
                           ? ThemeMode.dark
                           : ThemeMode.light;
                       _themeBool = !_themeBool;
                     }),
               ],
             ),
-            body: Maps(),
+            body: const Maps(),
           ),
         );
       },

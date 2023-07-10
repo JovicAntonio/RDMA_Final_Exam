@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:zavrsni_rdma/about/about.dart';
+import 'package:zavrsni_rdma/main_page/main_page.dart';
 import '../authentication/auth_page.dart';
 
 class DrawerLookup extends StatelessWidget {
-  const DrawerLookup({super.key});
+  final Color barColor;
+  const DrawerLookup({super.key, required this.barColor});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class DrawerLookup extends StatelessWidget {
       child: ListView(children: [
         Container(
           height: 57,
-          color: const Color.fromARGB(255, 239, 152, 47),
+          color: barColor,
           child: Row(
             children: [
               IconButton(
@@ -29,7 +31,7 @@ class DrawerLookup extends StatelessWidget {
                 ),
               ),
               const Text(
-                'Menu',
+                'Izbornik',
                 style: TextStyle(
                   fontSize: 18,
                 ),
@@ -42,38 +44,57 @@ class DrawerLookup extends StatelessWidget {
           title: const Row(
             children: [
               Icon(Icons.person_2_outlined),
-              Text('Profile'),
-            ],
-          ),
-        ),
-        ListTile(
-          onTap: () {},
-          title: const Row(
-            children: [
-              Icon(Icons.settings),
-              Text('Settings'),
-            ],
-          ),
-        ),
-        ListTile(
-          onTap: () {},
-          title: const Row(
-            children: [
-              Icon(Icons.info_outlined),
-              Text('About'),
+              Text('Profil'),
             ],
           ),
         ),
         ListTile(
           onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MainPage(),
+              ),
+            );
+          },
+          title: const Row(
+            children: [
+              Icon(Icons.home_outlined),
+              Text('Početna'),
+            ],
+          ),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => new About(),
+              ),
+            );
+          },
+          title: const Row(
+            children: [
+              Icon(Icons.info_outlined),
+              Text('O nama'),
+            ],
+          ),
+        ),
+        ListTile(
+          tileColor: const Color.fromARGB(255, 204, 112, 112),
+          onTap: () {
             signOut();
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => new AuthPage()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AuthPage(),
+              ),
+            );
           },
           title: const Row(
             children: [
               Icon(Icons.logout_outlined),
-              Text('Logout'),
+              Text('Odjava'),
             ],
           ),
         ),

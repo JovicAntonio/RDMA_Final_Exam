@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import '../main_page/main_page.dart';
+import '../helpers.dart';
 
 class AuthContent extends StatefulWidget {
   const AuthContent({super.key});
@@ -14,13 +12,13 @@ class AuthContent extends StatefulWidget {
 }
 
 class _AuthContent extends State<AuthContent> {
-  final username_auth = TextEditingController();
-  final passwd_auth = TextEditingController();
+  final usernameAuth = TextEditingController();
+  final passwdAuth = TextEditingController();
 
   @override
   void dispose() {
-    username_auth.dispose();
-    passwd_auth.dispose();
+    usernameAuth.dispose();
+    passwdAuth.dispose();
     super.dispose();
   }
 
@@ -28,7 +26,6 @@ class _AuthContent extends State<AuthContent> {
   void initState() {
     super.initState();
     Firebase.initializeApp().whenComplete(() {
-      print("completed");
       setState(() {});
     });
   }
@@ -70,7 +67,7 @@ class _AuthContent extends State<AuthContent> {
                     vertical: 10,
                   ),
                   child: TextField(
-                    controller: username_auth,
+                    controller: usernameAuth,
                     cursorColor: const Color.fromARGB(255, 220, 130, 14),
                     decoration: const InputDecoration(
                       labelText: "Korisničko ime:",
@@ -94,7 +91,7 @@ class _AuthContent extends State<AuthContent> {
                     vertical: 10,
                   ),
                   child: TextField(
-                    controller: passwd_auth,
+                    controller: passwdAuth,
                     cursorColor: const Color.fromARGB(174, 220, 130, 14),
                     obscureText: true,
                     obscuringCharacter: '•',
@@ -120,29 +117,9 @@ class _AuthContent extends State<AuthContent> {
                     vertical: 10,
                   ),
                   child: TextButton(
-                    onPressed: () async {
-                      try {
-                        await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                                email: username_auth.text,
-                                password: passwd_auth.text)
-                            .then((value) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const MainPage(),
-                            ),
-                          );
-                        });
-                      } on FirebaseAuthException catch (e) {
-                        {
-                          if (e.code == "user-not-found") {
-                            showError(context, e.toString());
-                          } else if (e.code == 'wrong-password') {
-                            showError(context, e.toString());
-                          }
-                        }
-                      }
+                    onPressed: () {
+                      isAuthenticatedUser(
+                          usernameAuth.text, passwdAuth.text, context);
                     },
                     style: ButtonStyle(
                       shape: MaterialStatePropertyAll(
@@ -198,3 +175,4 @@ void showError(BuildContext context, String errorMsg) {
     },
   );
 }
+
