@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'drawer.dart';
+import 'maps.dart';
 import 'menu_button.dart';
 
 final ValueNotifier<ThemeMode> _notifier = ValueNotifier(ThemeMode.light);
@@ -19,7 +20,7 @@ class MainPage extends StatelessWidget {
       builder: (_, mode, __) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'App',
+          title: 'IBus',
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: mode,
@@ -27,7 +28,7 @@ class MainPage extends StatelessWidget {
             drawer: const DrawerLookup(),
             appBar: AppBar(
               title: const Text(
-                'App',
+                'IBus',
               ),
               centerTitle: true,
               backgroundColor: const Color.fromARGB(255, 239, 152, 47),
@@ -46,21 +47,7 @@ class MainPage extends StatelessWidget {
                     }),
               ],
             ),
-            body: const Column(
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Hello '),
-                        Text('World'),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            body: Maps(),
           ),
         );
       },

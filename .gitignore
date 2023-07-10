@@ -48,3 +48,6 @@ app.*.map.json
 /macos/Runner/GoogleService-Info.plist
 /lib/firebase_options.dart
 /ios/Runner/GoogleService-Info.plist
+/android/app/src/main/AndroidManifest.xml
+/ios/Runner/AppDelegate.swift
+/web/index.html

@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../authentication/auth_page.dart';
 
 class DrawerLookup extends StatelessWidget {
   const DrawerLookup({super.key});
@@ -62,7 +65,11 @@ class DrawerLookup extends StatelessWidget {
           ),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            signOut();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => new AuthPage()));
+          },
           title: const Row(
             children: [
               Icon(Icons.logout_outlined),
@@ -73,4 +80,8 @@ class DrawerLookup extends StatelessWidget {
       ]),
     );
   }
+}
+
+void signOut() async {
+  await FirebaseAuth.instance.signOut();
 }
