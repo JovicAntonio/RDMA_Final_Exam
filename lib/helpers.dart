@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'authentication/auth_contents.dart';
 import 'main_page/main_page.dart';
 
-Future<UserCredential> getAuthenticatedUser(cred) {
-  return cred;
-}
+String User = '';
+String Pass = '';
 
 void isAuthenticatedUser(user, pass, context) async {
   try {
@@ -29,8 +28,6 @@ void isAuthenticatedUser(user, pass, context) async {
     }
   }
 
-  final credentials = FirebaseAuth.instance
-      .signInWithEmailAndPassword(email: user, password: pass);
-
-  getAuthenticatedUser(credentials);
+  User = user;
+  Pass = pass;
 }

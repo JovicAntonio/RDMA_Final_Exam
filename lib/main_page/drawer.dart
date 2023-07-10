@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zavrsni_rdma/about/about.dart';
 import 'package:zavrsni_rdma/main_page/main_page.dart';
 import '../authentication/auth_page.dart';
+import '../profile/profile_info.dart';
 
 class DrawerLookup extends StatelessWidget {
   final Color barColor;
@@ -40,7 +41,14 @@ class DrawerLookup extends StatelessWidget {
           ),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Profile(),
+              ),
+            );
+          },
           title: const Row(
             children: [
               Icon(Icons.person_2_outlined),
