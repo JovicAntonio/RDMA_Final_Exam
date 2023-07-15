@@ -16,18 +16,18 @@ class _AuthContent extends State<AuthContent> {
   final passwdAuth = TextEditingController();
 
   @override
-  void dispose() {
-    usernameAuth.dispose();
-    passwdAuth.dispose();
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
     Firebase.initializeApp().whenComplete(() {
       setState(() {});
     });
+  }
+
+  @override
+  void dispose() {
+    usernameAuth.dispose();
+    passwdAuth.dispose();
+    super.dispose();
   }
 
   @override
@@ -68,13 +68,13 @@ class _AuthContent extends State<AuthContent> {
                   ),
                   child: TextField(
                     controller: usernameAuth,
-                    cursorColor: const Color.fromARGB(255, 220, 130, 14),
+                    cursorColor: const Color.fromARGB(255, 220, 130, 14),   
                     decoration: const InputDecoration(
                       labelText: "Korisničko ime:",
                       border: InputBorder.none,
                       filled: true,
-                      floatingLabelStyle: TextStyle(color: Colors.black),
-                      fillColor: Color.fromARGB(174, 217, 217, 217),
+                      floatingLabelStyle:  TextStyle(color: Colors.black),
+                      fillColor:  Color.fromARGB(174, 217, 217, 217),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           style: BorderStyle.solid,
@@ -155,24 +155,3 @@ class _AuthContent extends State<AuthContent> {
     );
   }
 }
-
-void showError(BuildContext context, String errorMsg) {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text("Greška"),
-        content: Text(errorMsg),
-        actions: [
-          TextButton(
-            child: const Text("OK"),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
-
