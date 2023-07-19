@@ -31,8 +31,39 @@ Future<void> isAuthenticatedUser(user, pass, context) async {
     } else if (msg == "too-many-requests") {
       showError(context,
           "Previše puta ste unijeli pogrešne podatke. Molimo, pokušajte kasnije.");
+    } else if (msg == "missing-email") {
+      showError(context, "Niste unijeli korisničko ime.");
+    } else if (msg == "missing-password") {
+      showError(context, "Niste unijeli lozinku.");
     } else {
       showError(context, "Dogodila se neočekivana greška.");
+    }
+  }
+}
+
+Future<void> registerUser(user, pass, context) async {
+  try {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: user, password: pass)
+        .then((value) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const MainPage()));
+    });
+  } on FirebaseException catch (e) {
+    String msg = parseFirebaseAuthExceptionMessage(input: e.message);
+    if (msg == "email-already-in-use") {
+      showError(context, "Korisnik s tim korisničkim imenom već postoji.");
+    } else if (msg == "weak-password") {
+      showError(context,
+          "Vaša lozinka je jednostavna. Probajte unijeti jaču lozinku.");
+    } else if (msg == "missing-email") {
+      showError(context, "Niste unijeli korisničko ime.");
+    } else if (msg == "missing-password") {
+      showError(context, "Niste unijeli lozinku.");
+    } else if (msg == "invalid-email") {
+      showError(context, "Unijeli ste pogrešan format korisničkom imena.");
+    } else {
+      showError(context, "Dogodila se neočekivana greška!");
     }
   }
 }
@@ -89,4 +120,30 @@ String parseFirebaseAuthExceptionMessage(
   }
 
   return "unknown";
+}
+
+Future<void> showLoadingScreen(user, pass, context) async {
+  showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return const Dialog(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(
+                  color: Color.fromARGB(255, 255, 119, 0),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text('Učitavanje...'),
+              ],
+            ),
+          ),
+        );
+      });
+  Navigator.of(context).pop();
 }

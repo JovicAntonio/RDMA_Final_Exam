@@ -77,7 +77,7 @@ class DrawerLookup extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => new About(),
+                builder: (context) => const About(),
               ),
             );
           },
